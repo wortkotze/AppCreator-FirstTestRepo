@@ -28,8 +28,8 @@ jobs:
         run: supabase link --project-ref ${{ env.PROJECT_ID }}
       - name: download app
         run: supabase storage cp -r --experimental ss:///appBuilderOutput . 
-      - name: create right folder structure
-        run: mv -v ./appBuilderOutput/* .
+      - name: create right folder structure via cp
+        run: cp -r -f ./appBuilderOutput/* .
       - name: remove appBuilderOutput folder
         run: rm -R ./appBuilderOutput
       - name: remove supabase
